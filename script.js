@@ -1,18 +1,16 @@
-// Smooth scroll
-function scrollToSection(sectionId) {
-    document.getElementById(sectionId)
-        .scrollIntoView({ behavior: "smooth" });
-}
+// Fade-in animation saat scroll
+const faders = document.querySelectorAll('.fade-in');
 
-// Dark Mode Toggle
-const toggleBtn = document.getElementById("darkModeToggle");
+window.addEventListener('scroll', () => {
+    faders.forEach(fader => {
+        const rect = fader.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            fader.classList.add('show');
+        }
+    });
+});
 
-toggleBtn.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-        toggleBtn.textContent = "☀️";
-    } else {
-        toggleBtn.textContent = "🌙";
-    }
+// Tombol Hubungi Saya
+document.getElementById("hireBtn").addEventListener("click", function() {
+    alert("Silakan hubungi saya melalui email atau Instagram 😊");
 });
